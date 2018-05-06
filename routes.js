@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, IndexRoute, Redirect } from 'react-router';
+import Feed from './src/components/Feed';
 
 /**
  * Wrapping the Master component with this decorator provides an easy way
@@ -16,6 +17,9 @@ import Layout from './src/components/Layout';
 
 export default (
   <Route component={UserIsAuthenticated(Master)}>
-    <Route path="/" component={Layout} />
+    <Route path="/" component={Layout}>
+      <IndexRoute component={Feed} />
+    </Route>
+
   </Route>
 );
