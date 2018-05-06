@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import CreateButton from './CreateButton';
 
 class Header extends Component {
 
@@ -22,6 +23,7 @@ class Header extends Component {
               Lore Quickstart
             </Link>
           </div>
+          <CreateButton/>
         </div>
       </nav>
     )

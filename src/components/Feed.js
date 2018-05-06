@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import Tweet from './Tweet';
+import PayloadStates from '../constants/PayloadStates';
 
 class Feed extends Component {
 
@@ -16,13 +17,20 @@ class Feed extends Component {
   renderTweet(tweet) {
     return (
       <li key={tweet.id}>
-        <Tweet key={tweet.id} tweet={tweet}/>
+        <Tweet key={tweet.id || tweet.cid} tweet={tweet}/>
       </li>
     );
   }
 
   render() {
     const tweets = this.props.tweets;
+    if (tweets.state === PayloadStates.FETCHING) {
+      return (
+        <h1 className="loading-text">
+          Cargando...
+        </h1>
+      )
+    }
 
     return (
       <div className="feed">
@@ -62,5 +70,8 @@ Feed.defaultProps = (function() {
   }
 })();
 
-
-export default Feed;
+export default lore.connect(function(getState, props){
+  return {
+    tweets: getState('tweet.find')
+  }
+})(Feed);

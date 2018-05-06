@@ -1,12 +1,7 @@
 export default {
-  attributes: {
-    text: {
-      type: 'text',
-      displayName: 'Message',
-      placeholder: "What's happening?"
-    }
-  },
+
   properties: {
+
     /**
      * Override the idAttribute if the primary key in the resource is named
      * anything other than 'id'. Doing so will allow the other methods to
